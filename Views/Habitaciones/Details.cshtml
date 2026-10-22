@@ -1,0 +1,9 @@
+@model Hotel.Web.Models.Habitacion
+<h1>Habitación @Model.Numero</h1>
+<dl class="row">
+    <dt class="col-sm-2">Piso</dt><dd class="col-sm-10">@Model.Piso</dd>
+    <dt class="col-sm-2">Tipo</dt><dd class="col-sm-10">@Model.IdTipoHabitacionNavigation.Nombre</dd>
+    <dt class="col-sm-2">Capacidad</dt><dd class="col-sm-10">@Model.IdTipoHabitacionNavigation.Capacidad</dd>
+    <dt class="col-sm-2">Precio/noche</dt><dd class="col-sm-10">@Model.IdTipoHabitacionNavigation.PrecioNoche.ToString("N2")</dd>
+</dl>
+<a asp-action="Index">Volver</a>

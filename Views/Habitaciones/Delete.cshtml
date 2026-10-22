@@ -1,0 +1,12 @@
+@model Hotel.Web.Models.Habitacion
+@{ ViewData["Title"] = "Dar de baja"; }
+<h1>Dar de baja la habitación @Model.Numero</h1>
+<div class="panel">
+    <p>Tipo: <strong>@Model.IdTipoHabitacionNavigation.Nombre</strong>, piso <strong>@Model.Piso</strong>.</p>
+    <p class="text-muted">Es una baja lógica: la habitación deja de mostrarse, pero se conserva su historial.</p>
+    <form asp-action="Delete" method="post" class="mt-4">
+        <input type="hidden" name="id" value="@Model.IdHabitacion" />
+        <button class="btn btn-danger">Confirmar baja</button>
+        <a asp-action="Index" class="btn btn-link">Cancelar</a>
+    </form>
+</div>

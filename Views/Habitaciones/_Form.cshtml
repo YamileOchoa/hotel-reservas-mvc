@@ -1,0 +1,18 @@
+@model Hotel.Web.Models.Habitacion
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<input type="hidden" asp-for="IdHabitacion" />
+<div class="mb-3">
+    <label asp-for="Numero" class="form-label"></label>
+    <input asp-for="Numero" class="form-control" />
+    <span asp-validation-for="Numero" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Piso" class="form-label"></label>
+    <input asp-for="Piso" class="form-control" />
+    <span asp-validation-for="Piso" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="IdTipoHabitacion" class="form-label">Tipo</label>
+    <select asp-for="IdTipoHabitacion" class="form-select" asp-items="(SelectList)ViewBag.Tipos"></select>
+    <span asp-validation-for="IdTipoHabitacion" class="text-danger"></span>
+</div>

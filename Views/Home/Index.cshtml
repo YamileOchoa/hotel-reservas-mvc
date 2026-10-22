@@ -1,0 +1,35 @@
+@{ ViewData["Title"] = "Inicio"; }
+
+<section class="hero">
+    <p class="eyebrow" style="color:var(--gold)">Sistema de reservas</p>
+    <h1>Hospitalidad con atención al detalle</h1>
+    <p class="lead">Gestione habitaciones, consulte la disponibilidad y administre cada reserva desde un solo lugar.</p>
+    <div class="hero-actions">
+        <a asp-controller="Reservas" asp-action="Disponibles" class="btn btn-gold">Consultar disponibilidad</a>
+        <a asp-controller="Reservas" asp-action="Create" class="btn btn-ghost">Nueva reserva</a>
+    </div>
+</section>
+
+<div class="row g-4 mt-2">
+    <div class="col-md-4">
+        <a class="feature-card" asp-controller="Habitaciones" asp-action="Index">
+            <span class="num">01</span>
+            <h3>Habitaciones</h3>
+            <p>Administre el inventario de habitaciones por tipo, piso y estado.</p>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a class="feature-card" asp-controller="Reservas" asp-action="Disponibles">
+            <span class="num">02</span>
+            <h3>Disponibilidad</h3>
+            <p>Encuentre habitaciones libres para cualquier rango de fechas.</p>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a class="feature-card" asp-controller="Reservas" asp-action="Index">
+            <span class="num">03</span>
+            <h3>Reservas</h3>
+            <p>Revise, registre y cancele las reservas de sus huéspedes.</p>
+        </a>
+    </div>
+</div>

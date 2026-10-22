@@ -1,0 +1,43 @@
+@model Hotel.Web.ViewModels.DisponiblesVM
+@{ ViewData["Title"] = "Disponibilidad"; }
+
+<p class="eyebrow">Consulta</p>
+<h1>Habitaciones disponibles</h1>
+
+<form method="get" class="toolbar">
+    <div>
+        <label class="form-label" for="ingreso">Ingreso</label>
+        <input id="ingreso" type="date" name="ingreso" class="form-control" value="@Model.Ingreso?.ToString("yyyy-MM-dd")" />
+    </div>
+    <div>
+        <label class="form-label" for="salida">Salida</label>
+        <input id="salida" type="date" name="salida" class="form-control" value="@Model.Salida?.ToString("yyyy-MM-dd")" />
+    </div>
+    <button class="btn btn-primary">Buscar</button>
+</form>
+
+<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+@if (Model.Ingreso.HasValue && Model.Salida.HasValue && ViewData.ModelState.IsValid)
+{
+    <table class="table">
+        <thead>
+            <tr><th>Número</th><th>Piso</th><th>Tipo</th><th>Cap.</th><th class="text-end">Precio / noche</th><th class="text-end">Noches</th><th class="text-end">Total estimado</th></tr>
+        </thead>
+        <tbody>
+        @foreach (var h in Model.Habitaciones)
+        {
+            <tr>
+                <td><strong>@h.Numero</strong></td><td>@h.Piso</td><td>@h.Tipo</td><td>@h.Capacidad</td>
+                <td class="text-end">@h.PrecioNoche.ToString("N2")</td>
+                <td class="text-end">@h.Noches</td>
+                <td class="text-end"><strong>@h.Total.ToString("N2")</strong></td>
+            </tr>
+        }
+        @if (!Model.Habitaciones.Any())
+        {
+            <tr><td colspan="7" class="text-center text-muted py-4">No hay habitaciones libres en ese rango de fechas.</td></tr>
+        }
+        </tbody>
+    </table>
+}
